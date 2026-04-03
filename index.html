@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PathMatch - Career Path Recommendations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="showPage('home')" style="cursor: pointer;">PathMatch</div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#finder" class="nav-link" onclick="showPage('finder')">Course Finder</a>
+                <a href="#career" class="nav-link" onclick="showPage('career')">WSDIP Courses</a>
+                <a href="#wsdip" class="nav-link" onclick="showPage('wsdip')">Career Paths</a>
+                <a href="#tests" class="nav-link" onclick="showPage('tests')">MBTI & RIASEC</a>
+                <a href="#contact" class="nav-link" onclick="showPage('contact')">Contact</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Your Career Journey Starts Here</h1>
+                <p>Discover the perfect career path and courses to match your potential</p>
+                <button class="cta-btn" onclick="showPage('finder')">Find Your Path</button>
+            </div>
+        </section>
+        
+        <!-- Find Your Course Section -->
+        <section class="find-course-section">
+            <div class="container">
+                <h2 style="text-align: center;">Find Your Course, Plan Your Career</h2>
+                <div class="course-options">
+                    <div class="course-option-card" onclick="showPage('finder')">
+                        <div class="option-icon">🔍</div>
+                        <h3>Course Finder</h3>
+                    </div>
+                    <div class="course-option-card" onclick="showPage('wsdip')">
+                        <div class="option-icon">🎓</div>
+                        <h3>WSDIP Courses</h3>
+                    </div>
+                    <div class="course-option-card" onclick="showPage('career')">
+                        <div class="option-icon">💼</div>
+                        <h3>Career Paths</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="features">
+            <div class="container">
+                <h2 style="text-align: center;">Why Choose PathMatch?</h2>
+                <p style="text-align: center; color: rgba(255,255,255,0.7); margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">PathMatch helps you take the guesswork out of your future with AI-powered personalised career recommendations, real-world guidance from WSDIP, and direct access to courses that match today's industry trends.</p>
+                <div class="feature-grid">
+                    <div class="feature-card" style="text-align: center;">
+                        <h3>Personalized Matching</h3>
+                        <p>AI-powered career path recommendations</p>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <h3>Industry Insights</h3>
+                        <p>Real-world career guidance and trends</p>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <h3>WSDIP Integration</h3>
+                        <p>Direct access to relevant courses</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Student Success Stories -->
+        <section class="feedback-carousel" style="display: block; padding: 80px 0; background: rgba(255, 255, 255, 0.02);">
+            <div class="container">
+                <h2 style="text-align: center; color: #ffffff; font-size: 48px; font-weight: 300; margin-bottom: 60px; letter-spacing: 3px; text-transform: uppercase;">Student Success Stories</h2>
+                <div class="carousel-container" style="position: relative; overflow: hidden; max-width: 1200px; margin: 0 auto;">
+                    <div class="carousel-track" id="carousel-track" style="display: flex; transition: transform 0.5s ease;">
+                        <!-- Feedback items will be populated by JavaScript -->
+                    </div>
+                    <button class="carousel-btn prev" onclick="moveCarousel(-1)" style="position: absolute; top: 50%; transform: translateY(-50%); left: -60px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; width: 50px; height: 50px; cursor: pointer; font-size: 24px;">‹</button>
+                    <button class="carousel-btn next" onclick="moveCarousel(1)" style="position: absolute; top: 50%; transform: translateY(-50%); right: -60px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; width: 50px; height: 50px; cursor: pointer; font-size: 24px;">›</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- WSDIP Courses Page -->
+    <div id="career" class="page">
+        <div class="wsdip-container">
+            <h1>WSDip Courses</h1>
+            
+            <div class="wsdip-grid">
+                <div class="wsdip-card" onclick="showCategoryDetails('business')">
+                    <div class="wsdip-icon">📊</div>
+                    <h3>Business</h3>
+                    <div class="course-codes">
+                        DPACC, DPAOP, DPCED, DPCAM, DPCEMAVI, DPCEMCBS, DPCEMLSC, DPECR, DPEVM, DPFIM, DPHRM, DPLRM, DPLSC, DPPMS, DPSCO, DPTMT
+                    </div>
+                </div>
+                
+                <div class="wsdip-card" onclick="showCategoryDetails('engineering')">
+                    <div class="wsdip-icon">⚙️</div>
+                    <h3>Engineering</h3>
+                    <div class="course-codes">
+                        DPAAT, DPACE, DPAEM, DPAME, DPABH, DPAEG, DPCPT, DPEEG, DPLTEOPM, DPLTERAIL, DPLTEVEH, DPMOEED, DPMOEPRM, DPMSE, DPUENEQM, DPUENPCS, DPPAT, DPSSE
+                    </div>
+                </div>
+                
+                <div class="wsdip-card" onclick="showCategoryDetails('built-environment')">
+                    <div class="wsdip-icon">🏗️</div>
+                    <h3>Built Environment</h3>
+                    <div class="course-codes">
+                        DPABD, DPFMM, DPMES, DPVTT
+                    </div>
+                </div>
+                
+                <div class="wsdip-card" onclick="showCategoryDetails('idt')">
+                    <div class="wsdip-icon">💻</div>
+                    <h3>Information & Digital Technology</h3>
+                    <div class="course-codes">
+                        DPAIDAIE, DPAIDDEN, DPCMO, DPCMOIFS, DPCSF, DPDIO, DPECEAEA, DPECEIDE, DPISI
+                    </div>
+                </div>
+                
+                <div class="wsdip-card" onclick="showCategoryDetails('arts-design-media')">
+                    <div class="wsdip-icon">🎨</div>
+                    <h3>Arts & Media</h3>
+                    <div class="course-codes">
+                        DPMCD
+                    </div>
+                </div>
+                
+                <div class="wsdip-card" onclick="showCategoryDetails('health-science')">
+                    <div class="wsdip-icon">🏥</div>
+                    <h3>Health Science</h3>
+                    <div class="course-codes">
+                        DPNSG, DPOPY, DPPRM, DPREC
+                    </div>
+                </div>
+                
+                <div class="wsdip-card" onclick="showCategoryDetails('humanities-social')">
+                    <div class="wsdip-icon">🤝</div>
+                    <h3>Humanities & Social Sciences</h3>
+                    <div class="course-codes">
+                        DPCCM
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Category Details -->
+            <div id="category-details" class="category-details" style="display: none;">
+                <div class="category-header">
+                    <h1 id="category-title"></h1>
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for course.." class="search-input">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                </div>
+                <button class="back-btn" onclick="hideCategoryDetails()">← Back to Categories</button>
+                <div id="category-courses" class="course-cards-grid">
+                    <!-- WSDIP courses will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Finder Page -->
+    <div id="finder" class="page">
+        <div class="container">
+            <h1>ITE WSDIP Course Finder</h1>
+            <p style="text-align: center; color: rgba(255,255,255,0.7); margin-bottom: 40px;">Discover your perfect course match through personalized assessment</p>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar" style="width: 16.67%"></div>
+            </div>
+
+            <!-- Step 1: Basic Information -->
+            <div class="step active" id="step1">
+                <div class="card">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h2 class="step-title">Basic Information</h2>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="name">Full Name (Optional)</label>
+                        <input type="text" id="name" placeholder="Enter your full name (optional)">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email Address (Optional)</label>
+                        <input type="email" id="email" placeholder="Enter your email (optional)">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="education">Qualifications</label>
+                        <select id="education">
+                            <option value="">Select your qualifications</option>
+                            <option value="gce-na">GCE N(A)-Level</option>
+                            <option value="gce-n">GCE N-Level</option>
+                            <option value="gce-o">GCE O-Level</option>
+                        </select>
+                    </div>
+
+                    <div class="buttons">
+                        <div></div>
+                        <button class="btn btn-primary" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: MBTI & RIASEC -->
+            <div class="step" id="step2">
+                <div class="card">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h2 class="step-title">Personality Assessment</h2>
+                    </div>
+
+                    <p style="margin-bottom: 25px; color: rgba(255,255,255,0.7);">
+                        Enter your personality assessment results below. If you haven't taken these tests yet, visit our <a href="#tests" onclick="showPage('tests')" style="color: #ffffff; text-decoration: underline;">MBTI & RIASEC</a> page first.
+                    </p>
+
+                    <div class="input-group">
+                        <label for="mbti">MBTI Personality Type</label>
+                        <select id="mbti">
+                            <option value="">Select your MBTI type</option>
+                            <option value="INTJ">INTJ - The Architect</option>
+                            <option value="INTP">INTP - The Logician</option>
+                            <option value="ENTJ">ENTJ - The Commander</option>
+                            <option value="ENTP">ENTP - The Debater</option>
+                            <option value="INFJ">INFJ - The Advocate</option>
+                            <option value="INFP">INFP - The Mediator</option>
+                            <option value="ENFJ">ENFJ - The Protagonist</option>
+                            <option value="ENFP">ENFP - The Campaigner</option>
+                            <option value="ISTJ">ISTJ - The Logistician</option>
+                            <option value="ISFJ">ISFJ - The Defender</option>
+                            <option value="ESTJ">ESTJ - The Executive</option>
+                            <option value="ESFJ">ESFJ - The Consul</option>
+                            <option value="ISTP">ISTP - The Virtuoso</option>
+                            <option value="ISFP">ISFP - The Adventurer</option>
+                            <option value="ESTP">ESTP - The Entrepreneur</option>
+                            <option value="ESFP">ESFP - The Entertainer</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>RIASEC Interest Areas (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="realistic" name="riasec" value="Realistic">
+                                <label for="realistic">Realistic - Hands-on, practical</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="investigative" name="riasec" value="Investigative">
+                                <label for="investigative">Investigative - Research, analysis</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="artistic" name="riasec" value="Artistic">
+                                <label for="artistic">Artistic - Creative, expressive</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="social" name="riasec" value="Social">
+                                <label for="social">Social - Helping, teaching</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="enterprising" name="riasec" value="Enterprising">
+                                <label for="enterprising">Enterprising - Leading, persuading</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="conventional" name="riasec" value="Conventional">
+                                <label for="conventional">Conventional - Organizing, data</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <button class="btn btn-secondary" onclick="prevStep()">Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Strengths & Skills -->
+            <div class="step" id="step3">
+                <div class="card">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <h2 class="step-title">Strengths & Skills</h2>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Select your top strengths (Choose 3-5)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Problem Solving">
+                                <label>Problem Solving</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Communication">
+                                <label>Communication</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Technical Skills">
+                                <label>Technical Skills</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Creativity">
+                                <label>Creativity</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Analytical Thinking">
+                                <label>Analytical Thinking</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Teamwork">
+                                <label>Teamwork</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Project Management">
+                                <label>Project Management</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Attention to Detail">
+                                <label>Attention to Detail</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="technical-skills">Technical Skills (if any)</label>
+                        <textarea id="technical-skills" rows="4" placeholder="List any programming languages, software, tools, or technical skills you have..."></textarea>
+                    </div>
+
+                    <div class="buttons">
+                        <button class="btn btn-secondary" onclick="prevStep()">Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Life Experiences & Values -->
+            <div class="step" id="step4">
+                <div class="card">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <h2 class="step-title">Life Experiences & Values</h2>
+                    </div>
+
+                    <div class="input-group">
+                        <label>What motivates you most in your career?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="stability" name="motivation" value="Job security and stability">
+                                <label for="stability">Job security and stability</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="growth" name="motivation" value="Continuous learning and growth">
+                                <label for="growth">Continuous learning and growth</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="impact" name="motivation" value="Making a positive impact">
+                                <label for="impact">Making a positive impact</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="creativity" name="motivation" value="Creative expression">
+                                <label for="creativity">Creative expression</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="financial" name="motivation" value="Financial rewards">
+                                <label for="financial">Financial rewards</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="flexibility" name="motivation" value="Work-life balance">
+                                <label for="flexibility">Work-life balance</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Preferred work environment?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="office" name="environment" value="Traditional office">
+                                <label for="office">Traditional office</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="remote" name="environment" value="Remote/flexible">
+                                <label for="remote">Remote/flexible</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="hands-on" name="environment" value="Hands-on/workshop">
+                                <label for="hands-on">Hands-on/workshop</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="outdoor" name="environment" value="Outdoor/field work">
+                                <label for="outdoor">Outdoor/field work</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>How do you prefer to work?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="team" name="workstyle" value="Collaboratively in teams">
+                                <label for="team">Collaboratively in teams</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="independent" name="workstyle" value="Independently">
+                                <label for="independent">Independently</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="mixed" name="workstyle" value="Mix of both">
+                                <label for="mixed">Mix of both</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <button class="btn btn-secondary" onclick="prevStep()">Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Goals & Aspirations -->
+            <div class="step" id="step5">
+                <div class="card">
+                    <div class="step-header">
+                        <div class="step-number">5</div>
+                        <h2 class="step-title">Goals & Aspirations</h2>
+                    </div>
+
+                    <div class="input-group">
+                        <label>What is your primary career goal?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="specialist" name="goal" value="Become a technical specialist">
+                                <label for="specialist">Become a technical specialist in my field</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="management" name="goal" value="Move into management">
+                                <label for="management">Move into management/leadership roles</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="entrepreneur" name="goal" value="Start my own business">
+                                <label for="entrepreneur">Start my own business</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="consultant" name="goal" value="Become a consultant">
+                                <label for="consultant">Become a consultant/freelancer</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="research" name="goal" value="Research and development">
+                                <label for="research">Work in research and development</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="industry-interest">Industries that interest you most</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Technology">
+                                <label>Technology</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Healthcare">
+                                <label>Healthcare</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Finance">
+                                <label>Finance</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Education">
+                                <label>Education</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Manufacturing">
+                                <label>Manufacturing</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Media & Creative">
+                                <label>Media & Creative</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Hospitality">
+                                <label>Hospitality</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Engineering">
+                                <label>Engineering</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <button class="btn btn-secondary" onclick="prevStep()">Previous</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Additional Information -->
+            <div class="step" id="step6">
+                <div class="card">
+                    <div class="step-header">
+                        <div class="step-number">6</div>
+                        <h2 class="step-title">Additional Information</h2>
+                    </div>
+
+					
+
+                    <div class="input-group">
+                        <label for="additional-info">Any additional information you'd like us to consider?</label>
+                        <textarea id="additional-info" rows="4" placeholder="Anything else you think might help us recommend the best courses for you..."></textarea>
+                    </div>
+
+                    <div class="buttons">
+                        <button class="btn btn-secondary" onclick="prevStep()">Previous</button>
+                        <button class="btn btn-primary" onclick="generateRecommendations()">Get My Recommendations</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7: Recommendations -->
+            <div class="step" id="step7">
+                <div class="recommendations-container">
+                    <div class="recommendations-header">
+                        <h1>Career Paths</h1>
+                        <div class="search-container">
+                            <input type="text" placeholder="Search for course.." class="search-input">
+                            <span class="search-icon">🔍</span>
+                        </div>
+                    </div>
+
+                    <div class="recommendations" id="recommendations">
+                        <!-- Recommendations will be populated by JavaScript -->
+                    </div>
+
+                    <div class="buttons">
+                        <button class="btn btn-secondary" onclick="prevStep()">Previous</button>
+                        <button class="btn btn-primary" onclick="startOver()">Start New Assessment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Career Paths Page -->
+    <div id="wsdip" class="page">
+        <div class="career-paths-container">
+            <div class="career-header">
+                <h1>Career Paths</h1>
+                <div class="search-container">
+                    <input type="text" id="careerSearch" placeholder="Search for course.." class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+            
+            <div class="career-content">
+                <!-- Business Section -->
+                <div class="career-section">
+                    <h2 class="section-title">Business</h2>
+                    <div class="career-grid" id="business-grid">
+                        <!-- Business courses will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Built Environment Section -->
+                <div class="career-section">
+                    <h2 class="section-title">Built Environment</h2>
+                    <div class="career-grid" id="built-environment-grid">
+                        <!-- Built Environment courses will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Information & Digital Technology Section -->
+                <div class="career-section">
+                    <h2 class="section-title">Information & Digital Technology</h2>
+                    <div class="career-grid" id="idt-grid">
+                        <!-- IDT courses will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Engineering Section -->
+                <div class="career-section">
+                    <h2 class="section-title">Engineering</h2>
+                    <div class="career-grid" id="engineering-grid">
+                        <!-- Engineering courses will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Arts, Design & Media Section -->
+                <div class="career-section">
+                    <h2 class="section-title">Arts, Design & Media</h2>
+                    <div class="career-grid" id="arts-design-media-grid">
+                        <!-- Arts courses will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Health Science Section -->
+                <div class="career-section">
+                    <h2 class="section-title">Health Science</h2>
+                    <div class="career-grid" id="health-science-grid">
+                        <!-- Health Science courses will be populated here -->
+                    </div>
+                </div>
+                
+                <!-- Humanities & Social Sciences Section -->
+                <div class="career-section">
+                    <h2 class="section-title">Humanities & Social Sciences</h2>
+                    <div class="career-grid" id="humanities-social-grid">
+                        <!-- Humanities courses will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personality Tests Page -->
+    <div id="tests" class="page">
+        <div class="container">
+            <h1>MBTI & RIASEC</h1>
+            <p style="text-align: center; color: rgba(255,255,255,0.7); margin-bottom: 60px;">Take these assessments to better understand your personality and career interests</p>
+            
+            <div class="quiz-container">
+                <div class="quiz-section">
+                    <h2>MBTI Personality Test</h2>
+                    <p>Discover your personality type and understand how you interact with the world</p>
+                    <a href="https://www.16personalities.com" target="_blank" class="quiz-btn">Take MBTI Test</a>
+                </div>
+                <div class="quiz-section">
+                    <h2>RIASEC Interest Test</h2>
+                    <p>Identify your career interests and find fields that match your preferences</p>
+                    <a href="https://www.mynextmove.org/explore/ip" target="_blank" class="quiz-btn">Take RIASEC Test</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <div class="contact-hero">
+            <div class="container">
+                <h1>Get in touch</h1>
+                <p>Have a question about PathMatch or need help finding the right course? We'd love to help.</p>
+            </div>
+        </div>
+        
+        <div class="contact-main">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-options">
+                        <div class="contact-card">
+                            <div class="card-icon">💬</div>
+                            <h3>General inquiries</h3>
+                            <p>Questions about courses, admissions, or PathMatch services</p>
+                            <a href="mailto:enquiry@ite.edu.sg" class="contact-link">enquiry@ite.edu.sg</a>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="card-icon">🎓</div>
+                            <h3>Course guidance</h3>
+                            <p>Need help choosing the right course for your career goals?</p>
+                            <a href="mailto:info@pathmatch.edu.sg" class="contact-link">info@pathmatch.edu.sg</a>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="card-icon">🛠️</div>
+                            <h3>Technical support</h3>
+                            <p>Having trouble with the course finder or website?</p>
+                            <a href="mailto:support@pathmatch.edu.sg" class="contact-link">support@pathmatch.edu.sg</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-section">
+                        <div class="form-container">
+                            <h2>Send us a message</h2>
+                            <p>Prefer to send a detailed message? Fill out the form below.</p>
+                            
+                            <form id="contactForm" class="modern-form">
+                                <div class="form-grid">
+                                    <div class="form-field">
+                                        <input type="text" id="contactName" required>
+                                        <label for="contactName">Your name</label>
+                                    </div>
+                                    <div class="form-field">
+                                        <input type="email" id="contactEmail" required>
+                                        <label for="contactEmail">Email address</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-field">
+                                    <select id="contactSubject" required>
+                                        <option value="course-inquiry">Course inquiry</option>
+                                        <option value="career-guidance">Career guidance</option>
+                                        <option value="technical-support">Technical support</option>
+                                        <option value="partnership">Partnership opportunities</option>
+                                        <option value="feedback">Feedback</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-field">
+                                    <textarea id="contactMessage" rows="5" required></textarea>
+                                    <label for="contactMessage">Tell us more</label>
+                                </div>
+                                
+                                <button type="submit" class="submit-button">
+                                    <span>Send message</span>
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M8 1L15 8L8 15M15 8H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="info-section">
+                            <h3>Visit our campus</h3>
+                            <p>ITE College Central<br>2 Ang Mo Kio Drive<br>Singapore 567720</p>
+                        </div>
+                        
+                        <div class="info-section">
+                            <h3>Call us</h3>
+                            <p>+65 6780 5000<br>Monday - Friday, 9AM - 6PM</p>
+                        </div>
+                        
+                        <div class="info-section">
+                            <h3>Follow us</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link">LinkedIn</a>
+                                <a href="#" class="social-link">Facebook</a>
+                                <a href="#" class="social-link">Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
